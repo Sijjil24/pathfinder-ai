@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - PathFinder AI{% endblock %}
+{% block content %}
+<section class="page"><div class="wrap">
+  <div class="page-head reveal">
+    <div><h1>Hi, {{ user.name.split()[0] }} <span class="grad">&#128075;</span></h1><p>Here is how your career journey is going.</p></div>
+    <a class="btn" href="{{ url_for('new_plan') }}"><i class="bi bi-plus-lg"></i> New plan</a>
+  </div>
+  <div class="grid g3" style="margin-bottom:40px">
+    <div class="card stat reveal"><div class="ico"><i class="bi bi-folder2-open"></i></div><div><b data-count="{{ stats.plans }}">0</b><span>Plans created</span></div></div>
+    <div class="card stat reveal d1"><div class="ico"><i class="bi bi-check2-all"></i></div><div><b data-count="{{ stats.done }}">0</b><span>Steps completed</span></div></div>
+    <div class="card stat reveal d2"><div class="ico"><i class="bi bi-speedometer2"></i></div><div><b data-count="{{ stats.overall }}" data-suffix="%">0%</b><span>Overall progress</span></div></div>
+  </div>
+  <h2 style="font-size:1.3rem;margin-bottom:18px">Your plans</h2>
+  {% if plans %}
+  <div class="grid g3">
+    {% for p in plans %}
+    <a class="card pcard reveal d{{ loop.index0 % 3 }}" href="{{ url_for('plan', pid=p.id) }}">
+      <div class="ico"><i class="bi bi-signpost-2"></i></div>
+      <h3>{{ p.top_role or 'Career plan' }}</h3>
+      <div class="meta">{{ p.created_at[:10] }} &middot; {{ p.skills[:42] }}{{ '...' if p.skills|length > 42 }}</div>
+      <div class="row"><span>{{ p.done }} of {{ p.total }} steps</span><span>{{ p.pct }}%</span></div>
+      <div class="meter"><i style="--w:{{ p.pct }}%"></i></div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty reveal"><i class="bi bi-rocket-takeoff"></i><h3>No plans yet</h3><p>Create your first plan and get roles and a learning path in seconds.</p><a class="btn" href="{{ url_for('new_plan') }}">Create my first plan</a></div>
+  {% endif %}
+</div></section>
+{% endblock %}

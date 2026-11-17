@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Forgot password - PathFinder AI{% endblock %}
+{% block content %}
+<main class="auth">
+  {% include "_auth_side.html" %}
+  <div class="auth-main"><div class="auth-card">
+    <h1>Forgot password?</h1><p class="sub">Enter your email and we will send you a reset link.</p>
+    <div class="auth-msg" id="auth-msg" role="alert"></div>
+    <form method="post" data-auth="forgot">
+      <div class="field"><label for="email">Email</label><input class="input" id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com"></div>
+      <button class="btn block" type="submit">Send reset link</button>
+    </form>
+    <p class="alt"><a href="{{ url_for('login') }}"><i class="bi bi-arrow-left"></i> Back to log in</a></p>
+  </div></div>
+</main>
+{% endblock %}
+{% block footer %}{% endblock %}
+{% block scripts %}{% if firebase_on %}<script>window.FIREBASE_CONFIG={{ firebase_config|tojson }};</script><script type="module" src="{{ url_for('static', filename='auth.js') }}"></script>{% endif %}{% endblock %}

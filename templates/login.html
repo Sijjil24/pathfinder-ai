@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Log in - PathFinder AI{% endblock %}
+{% block content %}
+<main class="auth">
+  {% include "_auth_side.html" %}
+  <div class="auth-main"><div class="auth-card">
+    <h1>Welcome back</h1><p class="sub">Log in to see your career plans.</p>
+    <div class="auth-msg" id="auth-msg" role="alert"></div>
+    {% include "_social.html" %}
+    <form method="post" data-auth="login">
+      <input type="hidden" name="next" value="{{ next or '' }}">
+      <div class="field"><label for="email">Email</label><input class="input" id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com"></div>
+      <div class="field"><label for="password">Password</label><input class="input" id="password" name="password" type="password" required autocomplete="current-password" placeholder="Your password"></div>
+      <div class="row-between" style="margin-bottom:20px"><span></span><a href="{{ url_for('forgot') }}">Forgot password?</a></div>
+      <button class="btn block" type="submit">Log in</button>
+    </form>
+    <p class="alt">New here? <a href="{{ url_for('signup') }}">Create an account</a></p>
+  </div></div>
+</main>
+{% endblock %}
+{% block footer %}{% endblock %}
+{% block scripts %}{% if firebase_on %}<script>window.FIREBASE_CONFIG={{ firebase_config|tojson }};</script><script type="module" src="{{ url_for('static', filename='auth.js') }}"></script>{% endif %}{% endblock %}

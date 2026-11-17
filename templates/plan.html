@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}{{ p.name }}'s career path - PathFinder AI{% endblock %}
+{% block content %}
+<section class="page"><div class="wrap">
+  <div class="plan-head reveal">
+    <div><span class="eyebrow">Career plan</span><h1 style="font-size:clamp(1.8rem,3.4vw,2.5rem);font-weight:800">{{ p.name }}'s career path</h1><p style="color:var(--muted);margin-top:10px;max-width:60ch">{{ p.summary }}</p></div>
+    <div class="ring" id="ring" style="--pct:{{ progress }}">
+      <svg width="132" height="132" viewBox="0 0 120 120"><defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f766e"/><stop offset="1" stop-color="#f59e0b"/></linearGradient></defs>
+        <circle class="bg" cx="60" cy="60" r="52" fill="none" stroke-width="11"/><circle class="fg" cx="60" cy="60" r="52" fill="none" stroke-width="11"/></svg>
+      <b id="pct">{{ progress }}%</b>
+    </div>
+  </div>
+
+  <h2 style="font-size:1.35rem;margin-bottom:18px">Roles that fit you</h2>
+  <div class="grid g3" style="margin-bottom:46px">
+    {% for r in recs %}
+    <div class="card role reveal d{{ loop.index0 }}">
+      <h3><span>{{ r.role }}</span><em>{{ r.score }}%</em></h3>
+      <div class="meter"><i style="--w:{{ [r.score,100]|min }}%"></i></div>
+      {% if r.why %}<p>{{ r.why }}</p>{% endif %}
+      {% if r.gaps %}<div style="margin-top:10px">{% for g in r.gaps.split(', ') %}<span class="tag gap">learn: {{ g }}</span>{% endfor %}</div>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+
+  <h2 style="font-size:1.35rem;margin-bottom:18px">Your learning path</h2>
+  <ol class="tl">
+    {% for s in steps %}
+    <li class="tl-item reveal {{ 'done' if s.done }}">
+      <input class="step-box" type="checkbox" id="s{{ s.id }}" data-id="{{ s.id }}" {{ 'checked' if s.done }}>
+      <label for="s{{ s.id }}"><h3>{{ s.title }}</h3><p>{{ s.description }}</p>
+        <span class="meta">About {{ s.weeks }} week{{ 's' if s.weeks != 1 }}<span class="when">{% if s.done_at %} · done {{ s.done_at }}{% endif %}</span></span></label>
+    </li>
+    {% endfor %}
+  </ol>
+</div></section>
+{% endblock %}

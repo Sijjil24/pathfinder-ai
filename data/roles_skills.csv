@@ -1,0 +1,13 @@
+role,skills,interests
+Web Developer,html;css;javascript;react;git;responsive design;rest api;bootstrap,web;frontend;websites
+Backend Developer,python;flask;django;sql;rest api;git;docker;node.js,backend;apis;servers
+Data Analyst,excel;sql;python;pandas;power bi;statistics;data visualization;tableau,data;analytics;reports
+Data Scientist,python;pandas;numpy;statistics;machine learning;scikit-learn;sql;jupyter,data;ai;research
+Machine Learning Engineer,python;tensorflow;pytorch;machine learning;deep learning;numpy;mlops;docker,ai;machine learning;deep learning
+Mobile App Developer,flutter;dart;kotlin;java;swift;firebase;react native;git,mobile;apps;android
+Cybersecurity Analyst,networking;linux;python;penetration testing;wireshark;cryptography;siem;firewalls,security;hacking;networks
+DevOps Engineer,linux;docker;kubernetes;aws;ci/cd;git;bash;terraform,cloud;automation;infrastructure
+UI/UX Designer,figma;wireframing;user research;prototyping;html;css;adobe xd;design thinking,design;ux;creativity
+QA Engineer,manual testing;selenium;python;test cases;jira;api testing;postman;git,testing;quality;bugs
+Cloud Engineer,aws;azure;linux;networking;terraform;docker;python;iam,cloud;infrastructure;devops
+AI/NLP Engineer,python;nlp;transformers;tensorflow;huggingface;prompt engineering;apis;git,ai;chatbots;language

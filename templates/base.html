@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}PathFinder AI{% endblock %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+<header class="nav" id="nav"><div class="wrap nav-in">
+  <a class="logo" href="{{ url_for('home') }}"><span class="logo-mark"><i class="bi bi-compass"></i></span>PathFinder<span class="ai">AI</span></a>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i class="bi bi-list"></i></button>
+  <nav class="links" id="links">
+    <a href="{{ url_for('home') }}" class="{{ 'on' if request.endpoint=='home' }}">Home</a>
+    <a href="{{ url_for('about') }}" class="{{ 'on' if request.endpoint=='about' }}">About</a>
+    {% if user %}
+    <a href="{{ url_for('dashboard') }}" class="{{ 'on' if request.endpoint in ('dashboard','plan') }}">Dashboard</a>
+    <a href="{{ url_for('new_plan') }}" class="{{ 'on' if request.endpoint=='new_plan' }}">New plan</a>
+    {% endif %}
+  </nav>
+  <div class="nav-right">
+    <button class="icon-btn" id="theme" aria-label="Toggle dark mode"><i class="bi bi-moon-stars"></i></button>
+    {% if user %}
+    <div class="user">
+      <button class="avatar" id="avatar" aria-label="Account menu">{{ user.name[:1]|upper }}</button>
+      <div class="menu" id="menu">
+        <div class="menu-name">{{ user.name }}<small>{{ user.email }}</small></div>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('new_plan') }}">New plan</a>
+        <a href="{{ url_for('logout') }}">Log out</a>
+      </div>
+    </div>
+    {% else %}
+    <a class="btn ghost sm" href="{{ url_for('login') }}">Log in</a>
+    <a class="btn sm" href="{{ url_for('signup') }}">Sign up</a>
+    {% endif %}
+  </div>
+</div></header>
+
+<div class="toasts">
+{% for cat, msg in get_flashed_messages(with_categories=true) %}<div class="toast {{ cat }}">{{ msg }}</div>{% endfor %}
+</div>
+
+{% block content %}{% endblock %}
+
+{% block footer %}
+<footer><div class="wrap"><span>&copy; PathFinder AI &middot; AI Career Path Recommender for interns</span><span>Built with Python, Flask, TensorFlow &amp; free AI</span></div></footer>
+{% endblock %}
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

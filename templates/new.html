@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}New plan - PathFinder AI{% endblock %}
+{% block content %}
+<section class="page"><div class="wrap" style="max-width:760px">
+  <div class="page-head reveal"><div><h1>Create your career plan</h1><p>Tell us what you know and what you enjoy.</p></div></div>
+  <form class="card reveal" method="post" action="{{ url_for('recommend') }}" data-loading style="padding:32px">
+    <div class="field"><label for="name">Your name</label><input class="input" id="name" name="name" value="{{ user.name }}"></div>
+    <div class="field"><label for="skills">Skills <small>(separate with commas)</small></label>
+      <textarea class="input" id="skills" name="skills" rows="3" required placeholder="python, sql, html"></textarea>
+      <div class="chips">{% for s in skill_chips %}<button type="button" class="chip" data-target="#skills" data-v="{{ s }}">{{ s }}</button>{% endfor %}</div></div>
+    <div class="field"><label for="interests">Interests <small>(separate with commas)</small></label>
+      <textarea class="input" id="interests" name="interests" rows="2" placeholder="ai, web, data"></textarea>
+      <div class="chips">{% for s in interest_chips %}<button type="button" class="chip" data-target="#interests" data-v="{{ s }}">{{ s }}</button>{% endfor %}</div></div>
+    <button class="btn block" type="submit"><i class="bi bi-stars"></i> Get my career path</button>
+  </form>
+</div></section>
+<div id="loader"><div><div class="spin"></div><p>Reading your skills...</p></div></div>
+{% endblock %}

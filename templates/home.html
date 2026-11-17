@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero"><div class="wrap hero-grid">
+  <div>
+    <span class="pill"><i class="bi bi-stars"></i> AI Career Path Recommender for interns</span>
+    <h1>Find the career that <span class="grad">fits you</span>, then follow the path.</h1>
+    <p class="lead">Enter your skills and interests. PathFinder AI suggests job roles, builds a personal learning path, and tracks your progress as you grow.</p>
+    <div class="cta-row">
+      <a class="btn" href="{{ url_for('new_plan') if user else url_for('signup') }}">Get started free <i class="bi bi-arrow-right"></i></a>
+      <a class="btn ghost" href="{{ url_for('about') }}">How it works</a>
+    </div>
+    <div class="trust"><span><i class="bi bi-check2-circle"></i>100% free tools</span><span><i class="bi bi-check2-circle"></i>No card needed</span><span><i class="bi bi-check2-circle"></i>Made for interns</span></div>
+  </div>
+  <div class="mock reveal">
+    <div class="mock-top"><span></span><span></span><span></span></div>
+    <h4>Your top matches</h4>
+    <div class="mrow meter-row"><div><span>Data Scientist</span><span>86%</span></div><div class="meter"><i style="--w:86%"></i></div></div>
+    <div class="mrow"><div><span>Data Analyst</span><span>71%</span></div><div class="meter"><i style="--w:71%"></i></div></div>
+    <div class="mrow"><div><span>ML Engineer</span><span>58%</span></div><div class="meter"><i style="--w:58%"></i></div></div>
+    <span class="tag gap">learn: statistics</span><span class="tag gap">learn: scikit-learn</span><span class="tag gap">learn: sql</span>
+  </div>
+</div></section>
+
+<section class="s"><div class="wrap">
+  <div class="s-head reveal"><span class="eyebrow">Features</span><h2>Everything you need to plan your start</h2><p>From the first skill you list to the first job you apply for.</p></div>
+  <div class="grid g3">
+    <div class="card reveal"><div class="ico"><i class="bi bi-bullseye"></i></div><h3>Smart role matching</h3><p>A TensorFlow model compares your skills and interests with real job roles and ranks the best fits.</p></div>
+    <div class="card reveal d1"><div class="ico"><i class="bi bi-signpost-split"></i></div><h3>Personal learning path</h3><p>AI turns your skill gaps into ordered steps with free resources and a clear timeline.</p></div>
+    <div class="card reveal d2"><div class="ico"><i class="bi bi-graph-up-arrow"></i></div><h3>Progress tracking</h3><p>Tick off each step and watch your progress ring fill up. Every plan is saved to your account.</p></div>
+    <div class="card reveal"><div class="ico"><i class="bi bi-person-check"></i></div><h3>Your own account</h3><p>Sign up with email or Google. Reset your password any time.</p></div>
+    <div class="card reveal d1"><div class="ico"><i class="bi bi-moon-stars"></i></div><h3>Light &amp; dark mode</h3><p>Switch themes with one click. It works nicely on phones too.</p></div>
+    <div class="card reveal d2"><div class="ico"><i class="bi bi-cash-coin"></i></div><h3>Completely free</h3><p>Built on free tools: Flask, TensorFlow, SQLite and the Groq free tier.</p></div>
+  </div>
+</div></section>
+
+<section class="s" style="padding-top:0"><div class="wrap">
+  <div class="s-head reveal"><span class="eyebrow">How it works</span><h2>Three steps to your path</h2></div>
+  <div class="grid g3">
+    <div class="card reveal"><div class="num">01</div><h3>Tell us about you</h3><p>List your skills and interests. Tap quick-pick chips to save time.</p></div>
+    <div class="card reveal d1"><div class="num">02</div><h3>Get your matches</h3><p>See your top roles, how well you fit, and which skills you still need.</p></div>
+    <div class="card reveal d2"><div class="num">03</div><h3>Follow &amp; track</h3><p>Work through your learning path and tick each step as you finish it.</p></div>
+  </div>
+</div></section>
+
+<section class="s" style="padding-top:0"><div class="wrap"><div class="band reveal">
+  <h2>Ready to find your path?</h2><p>It takes less than a minute to get your first plan.</p>
+  <a class="btn" href="{{ url_for('new_plan') if user else url_for('signup') }}">Start now <i class="bi bi-arrow-right"></i></a>
+</div></div></section>
+{% endblock %}

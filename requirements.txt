@@ -1,0 +1,7 @@
+flask>=3.0
+tensorflow>=2.16
+numpy
+groq
+python-dotenv
+google-auth
+requests

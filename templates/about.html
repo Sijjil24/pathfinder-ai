@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}About - PathFinder AI{% endblock %}
+{% block content %}
+<section class="page"><div class="wrap">
+  <div class="s-head reveal"><span class="eyebrow">About</span><h2>How PathFinder AI works</h2><p>A career recommendation tool made for interns, built entirely with free tools.</p></div>
+  <div class="grid g2">
+    <div class="card reveal"><div class="ico"><i class="bi bi-cpu"></i></div><h3>1. TensorFlow matches roles</h3><p>A small neural network, trained on a skills-to-roles dataset, scores how well your profile fits each job role.</p></div>
+    <div class="card reveal d1"><div class="ico"><i class="bi bi-chat-square-text"></i></div><h3>2. AI writes your path</h3><p>Llama models on Groq's free tier turn your skill gaps into a step-by-step plan with free resources.</p></div>
+    <div class="card reveal"><div class="ico"><i class="bi bi-database"></i></div><h3>3. SQLite saves everything</h3><p>Your profiles, recommendations and completed steps are stored so you can come back any time.</p></div>
+    <div class="card reveal d1"><div class="ico"><i class="bi bi-shield-lock"></i></div><h3>4. Secure sign-in</h3><p>Passwords are hashed. Google sign-in and reset emails run through Firebase Authentication.</p></div>
+  </div>
+  <div class="s-head" style="margin-top:70px"><h2>FAQ</h2></div>
+  <div style="max-width:720px;margin:0 auto">
+    <details class="faq"><summary>Is it really free?</summary><p>Yes. Flask, TensorFlow, SQLite, the Groq free tier and Firebase's free plan cost nothing.</p></details>
+    <details class="faq"><summary>What if I have no Groq key?</summary><p>The app still works. It uses a built-in learning path template until you add a key.</p></details>
+    <details class="faq"><summary>Can I add more job roles?</summary><p>Yes. Edit <code>data/roles_skills.csv</code>, then run the training script again.</p></details>
+  </div>
+</div></section>
+{% endblock %}
